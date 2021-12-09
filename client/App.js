@@ -4,9 +4,7 @@ import HomePage from './components/homepage/homePage.jsx';
 const App = () => {
   return (
     <div>
-      <div>
-        <HomePage />
-      </div>
+      <HomePage />
     </div>
   );
 };

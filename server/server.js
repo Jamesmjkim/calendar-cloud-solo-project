@@ -5,6 +5,10 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+app.use(
+  '/static',
+  express.static(path.resolve(__dirname, './../client/static'))
+);
 
 if (process.env.NODE_ENV === 'production') {
   app.use('/build', express.static(path.resolve(__dirname, './../build')));
