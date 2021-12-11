@@ -6,11 +6,11 @@ const loginController = require('./../controllers/loginController.js');
 const { verifyUser, createUser } = loginController;
 
 router.post('/', verifyUser, (req, res) => {
-  return res.sendStatus(200);
-});
-
-router.post('/signup', createUser, (req, res) => {
-  return res.sendStatus(200);
+  if (res.locals.verified === false) {
+    return res.redirect('/register');
+  } else {
+    return res.status(200).json({ login: 'verified pass' });
+  }
 });
 
 module.exports = router;

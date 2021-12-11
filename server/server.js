@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(upload.array());
 
 const loginRouter = require('./routes/login.js');
+const registerRouter = require('./routes/register.js');
 
 app.use(
   '/static',
@@ -24,6 +25,7 @@ app.use(
 );
 
 app.use('/login', loginRouter);
+app.use('/register', registerRouter);
 
 if (process.env.NODE_ENV === 'production') {
   app.use('/build', express.static(path.resolve(__dirname, './../build')));
