@@ -4,7 +4,7 @@ const PadDays = () => {
   return (
     <span
       className='border border-success mb-2'
-      style={{ width: '10vw', height: '5vh' }}
+      style={{ width: '10vw', height: '15vh' }}
     >
       padding day
     </span>

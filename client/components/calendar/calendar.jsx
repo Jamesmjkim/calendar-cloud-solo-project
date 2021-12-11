@@ -18,10 +18,12 @@ const Calendar = () => {
   const weekday = dateString.split(' ')[1];
 
   return (
-    <div className='container'>
-      <h3 className='fw-bold'>{`${monthString} ${year}`}</h3>
-      <Weekdays />
-      <DayBlock weekday={weekday} daysInMonth={daysInMonth} />
+    <div className='col'>
+      <div className='container' style={{ height: '100vh' }}>
+        <h3 className='fw-bold text-center mt-5'>{`${monthString} ${year}`}</h3>
+        <Weekdays />
+        <DayBlock weekday={weekday} daysInMonth={daysInMonth} />
+      </div>
     </div>
   );
 };
