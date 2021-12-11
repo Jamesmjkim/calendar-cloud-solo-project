@@ -25,6 +25,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Development Calendar',
       template: './client/index.html',
+      cache: false,
     }),
   ],
   devServer: {
@@ -32,5 +33,6 @@ module.exports = {
       publicPath: '/build',
       //   directory: path.resolve(__dirname, './build'),
     },
+    hot: true,
   },
 };
