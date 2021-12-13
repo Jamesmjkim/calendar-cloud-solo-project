@@ -10,6 +10,9 @@ const Calendar = () => {
   const year = todayDate.getFullYear();
   const daysInMonth = new Date(year, month + 1 + curMonth, 0).getDate();
   const firstDayOfMonth = new Date(year, month + curMonth, 1);
+  let curDate;
+  if (curMonth === 0) curDate = todayDate.getDate();
+  else curDate = null;
 
   const dateString = firstDayOfMonth.toLocaleDateString('en-us', {
     weekday: 'long',
@@ -45,7 +48,11 @@ const Calendar = () => {
         </div>
 
         <Weekdays />
-        <DayBlock weekday={weekday} daysInMonth={daysInMonth} />
+        <DayBlock
+          weekday={weekday}
+          daysInMonth={daysInMonth}
+          curDate={curDate}
+        />
       </div>
     </div>
   );

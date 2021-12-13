@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DaySquare = ({ day }) => {
+const DaySquare = ({ day, curDate }) => {
   return (
     <div
       className='card border border-secondary'
@@ -12,7 +12,11 @@ const DaySquare = ({ day }) => {
       }}
     >
       <div className='card-body'>
-        <div className='card-title fs-6'>{day}</div>
+        {curDate ? (
+          <div className='card-title fs-6 text-danger'>{day}</div>
+        ) : (
+          <div className='card-title fs-6'>{day}</div>
+        )}
       </div>
     </div>
   );

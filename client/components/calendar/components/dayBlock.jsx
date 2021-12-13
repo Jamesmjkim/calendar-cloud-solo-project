@@ -2,7 +2,7 @@ import React from 'react';
 import DaySquare from './daySquare.jsx';
 import PadDays from './padDays.jsx';
 
-const DayBlock = ({ weekday, daysInMonth }) => {
+const DayBlock = ({ weekday, daysInMonth, curDate }) => {
   const weekdays = [
     'Sunday',
     'Monday',
@@ -19,7 +19,11 @@ const DayBlock = ({ weekday, daysInMonth }) => {
     if (i <= padDays) {
       blocks.push(<PadDays key={i} />);
     } else {
-      blocks.push(<DaySquare day={i - padDays} key={i} />);
+      if (i - padDays === curDate) {
+        blocks.push(<DaySquare day={i - padDays} curDate={true} key={i} />);
+      } else {
+        blocks.push(<DaySquare day={i - padDays} curDate={false} key={i} />);
+      }
     }
   }
 
