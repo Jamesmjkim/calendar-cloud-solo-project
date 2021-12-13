@@ -15,7 +15,7 @@ const DayBlock = ({ weekday, daysInMonth }) => {
   const blocks = [];
   const padDays = weekdays.indexOf(weekday);
   //   console.log(padDays);
-  for (let i = 1; i < daysInMonth + padDays; i++) {
+  for (let i = 1; i <= daysInMonth + padDays; i++) {
     if (i <= padDays) {
       blocks.push(<PadDays key={i} />);
     } else {
@@ -25,10 +25,9 @@ const DayBlock = ({ weekday, daysInMonth }) => {
 
   return (
     <div
-      className='container d-flex justify-content-start flex-wrap'
+      className='container d-flex flex-wrap justify-content-start'
       style={{ width: '100vw' }}
     >
-      {/* <div className='row'>{blocks}</div> */}
       {blocks}
     </div>
   );

@@ -17,7 +17,7 @@ const Weekdays = () => {
   });
   return (
     <div
-      className='container d-flex text-center justitfy-content-start'
+      className='container d-flex text-center justify-content-start'
       style={{ width: '100vw' }}
     >
       {dayBlock}
