@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Weekdays from './components/weekdays.jsx';
-import DayBlock from './components/dayBlock.jsx';
+import Weekdays from './components/Weekdays.jsx';
+import DayBlock from './components/DayBlock.jsx';
 
 const Calendar = () => {
   const [curMonth, setCurMonth] = useState(0);

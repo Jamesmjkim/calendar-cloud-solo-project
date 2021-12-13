@@ -1,6 +1,6 @@
 import React from 'react';
 import Calendar from './Calendar.jsx';
-import Sidebar from './sidebar.jsx';
+import Sidebar from './Sidebar.jsx';
 
 const CalendarPage = () => {
   return (
