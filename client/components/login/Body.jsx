@@ -10,7 +10,7 @@ const Body = ({ loginSubmit }) => {
       <div className='card ' style={{ width: '50%' }}>
         <div className='card-body'>
           <h5 className='card-title'>Login</h5>
-          <form id='loginForm'>
+          <form id='loginForm' onSubmit={loginSubmit}>
             <div className='mb-3'>
               <label htmlFor='username' className='form-label'>
                 Username
@@ -33,12 +33,7 @@ const Body = ({ loginSubmit }) => {
                 name='password'
               />
             </div>
-            <input
-              type='button'
-              className='btn btn-primary'
-              value='Login'
-              onClick={() => loginSubmit()}
-            />
+            <input type='submit' className='btn btn-primary' value='Login' />
           </form>
           <button className='btn btn-secondary'>
             <Link to='/register' className='text-decoration-none text-white'>

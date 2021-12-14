@@ -1,25 +1,37 @@
 import React from 'react';
 import Navbar from './Navbar.jsx';
 import Body from './Body.jsx';
+import { useHistory } from 'react-router-dom';
 
-function loginSubmit() {
-  const form = document.getElementById('loginForm');
-  //   console.log(form.username.value);
-  //   console.log(form.password.value);
-  const loginInfo = new FormData();
-  loginInfo.append('username', form.username.value);
-  loginInfo.append('password', form.password.value);
-  //   console.log(loginInfo.get());
-  fetch('http://localhost:3000/login', {
-    method: 'POST',
-    mode: 'cors',
-    body: loginInfo,
-  })
-    .then((res) => res.json())
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
-}
-const Login = () => {
+const Login = ({ setLoggedIn }) => {
+  let history = useHistory();
+  let attempts = 0;
+
+  function loginSubmit(e) {
+    const form = document.getElementById('loginForm');
+    e.preventDefault();
+    const loginInfo = new FormData();
+    loginInfo.append('username', form.username.value);
+    loginInfo.append('password', form.password.value);
+    fetch('http://localhost:3000/login', {
+      method: 'POST',
+      mode: 'cors',
+      body: loginInfo,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        if (res.login) {
+          attempts = 0;
+          setLoggedIn(true);
+          history.push('/calendar');
+        } else if (attempts > 2) {
+          history.push('/register');
+        }
+        attempts++;
+      })
+      .catch((err) => console.log(err));
+  }
   return (
     <div>
       <Navbar />

@@ -9,40 +9,40 @@ import Files from './components/files/Files.jsx';
 import Settings from './components/settings/Settings.jsx';
 
 const App = function () {
-  // const [loggedIn, setLoggedIn] = useState(false);
-  // if (!loggedIn) {
-  //   return (
-  //     <Routes>
-  //       <Route exact path='/' element={<HomePage />} />
-  //       <Route path='login' element={<Login />} />
-  //       <Route path='register' element={<Register />} />
-  //     </Routes>
-  //   );
-  // } else
-  return (
-    <div>
+  const [loggedIn, setLoggedIn] = useState(false);
+  if (!loggedIn) {
+    return (
       <Switch>
         <Route exact path='/'>
           <HomePage />
         </Route>
         <Route path='/login'>
-          <Login />
+          <Login setLoggedIn={setLoggedIn} />
         </Route>
         <Route path='/register'>
           <Register />
         </Route>
-        {/* <Route path='login' element={<Login />} />
-        <Route path='register' element={<Register />} /> */}
       </Switch>
-      {/* <HomePage /> */}
-      {/* <Login /> */}
-      {/* <Register /> */}
-      {/* <CalendarPage /> */}
-      {/* <Events /> */}
-      {/* <Files /> */}
-      {/* <Settings /> */}
-    </div>
-  );
+    );
+  } else
+    return (
+      <div>
+        <Switch>
+          <Route exact path='/calendar'>
+            <CalendarPage setLoggedIn={setLoggedIn} />
+          </Route>
+          <Route path='/events'>
+            <Events setLoggedIn={setLoggedIn} />
+          </Route>
+          <Route path='/files'>
+            <Files setLoggedIn={setLoggedIn} />
+          </Route>
+          <Route path='/settings'>
+            <Settings setLoggedIn={setLoggedIn} />
+          </Route>
+        </Switch>
+      </div>
+    );
 };
 
 export default App;

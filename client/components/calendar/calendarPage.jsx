@@ -2,11 +2,11 @@ import React from 'react';
 import Calendar from './Calendar.jsx';
 import Sidebar from './Sidebar.jsx';
 
-const CalendarPage = () => {
+const CalendarPage = ({ setLoggedIn }) => {
   return (
     <div className='container-fluid' style={{ width: '100vw' }}>
       <div className='row'>
-        <Sidebar />
+        <Sidebar setLoggedIn={setLoggedIn} />
         <Calendar />
       </div>
     </div>

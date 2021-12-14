@@ -38,6 +38,13 @@ const Sidebar = () => {
         <a className='navbar-brand fs-4 text-black' href='/settings'>
           Settings
         </a>
+        <a
+          href='/'
+          className='navbar-brand fs-4 text-black'
+          onClick={() => setLoggedIn(false)}
+        >
+          Log Out
+        </a>
       </div>
       <div
         className='container d-flex flex-column justify-content-end mx-auto'
