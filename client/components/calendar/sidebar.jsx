@@ -4,7 +4,12 @@ const Sidebar = () => {
   return (
     <div
       className='container col-2'
-      style={{ width: '15vw', height: '100vh', backgroundColor: '#F0F8FF' }}
+      style={{
+        width: '15vw',
+        height: '100vh',
+        backgroundColor: '#F0F8FF',
+        minWidth: '120px',
+      }}
     >
       <div
         className='d-flex flex-column justify-content-start my-4'
@@ -13,7 +18,7 @@ const Sidebar = () => {
         <a className='navbar-brand' href='/'>
           <img src='http://localhost:3000/static/logo.png' width='50px' />
         </a>
-        <a className='navbar-brand fs-4 text-black' href='/'>
+        <a className='navbar-brand fs-4 fw-bold text-black' href='/'>
           Calendar Cloud
         </a>
       </div>

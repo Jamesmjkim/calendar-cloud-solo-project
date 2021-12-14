@@ -4,15 +4,19 @@ import Login from './components/login/Login.jsx';
 import Register from './components/register/Register.jsx';
 import CalendarPage from './components/calendar/CalendarPage.jsx';
 import Events from './components/events/Events.jsx';
+import Files from './components/files/Files.jsx';
+import Settings from './components/settings/Settings.jsx';
 
 const App = function () {
   return (
     <div>
-      {/* <HomePage /> */}
+      <HomePage />
       {/* <Login /> */}
       {/* <Register /> */}
       {/* <CalendarPage /> */}
-      <Events />
+      {/* <Events /> */}
+      {/* <Files /> */}
+      {/* <Settings /> */}
     </div>
   );
 };

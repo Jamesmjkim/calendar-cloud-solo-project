@@ -5,9 +5,9 @@ const Body = () => {
     <div className='col'>
       <div className='container-fluid d-flex flex-column ms-0 m-5'>
         <div className='container'>
-          <h3 className='fw-bold'>List of Events</h3>
+          <h3 className='fw-bold'>List of Files</h3>
           <div>
-            <button className='btn btn-primary btn-lg'>New Event</button>
+            <button className='btn btn-primary btn-lg'>New File</button>
           </div>
         </div>
       </div>
@@ -19,9 +19,10 @@ const Body = () => {
           >
             <div className='container' style={{ padding: '0px 12px 0px 12px' }}>
               <div className='row'>
-                <div className='col-3 border'>Date</div>
-                <div className='col-3 border'>Event</div>
-                <div className='col-6 border'>Description</div>
+                <div className='col-3 border'>Date Created</div>
+                <div className='col-3 border'>File Name</div>
+                <div className='col-3 border'>File Type</div>
+                <div className='col-3 border'>File size</div>
               </div>
             </div>
           </div>
