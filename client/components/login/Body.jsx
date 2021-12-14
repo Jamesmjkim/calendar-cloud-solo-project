@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Body = ({ loginSubmit }) => {
   return (
@@ -29,7 +30,7 @@ const Body = ({ loginSubmit }) => {
                 type='password'
                 className='form-control'
                 id='password'
-                name='password' 
+                name='password'
               />
             </div>
             <input
@@ -39,7 +40,11 @@ const Body = ({ loginSubmit }) => {
               onClick={() => loginSubmit()}
             />
           </form>
-            <button className='btn btn-secondary'><a href="/register" className='text-decoration-none text-white'>Register</a></button>
+          <button className='btn btn-secondary'>
+            <Link to='/register' className='text-decoration-none text-white'>
+              Register
+            </Link>
+          </button>
         </div>
       </div>
     </div>

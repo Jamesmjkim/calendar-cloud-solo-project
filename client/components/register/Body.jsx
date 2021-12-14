@@ -9,7 +9,7 @@ const Body = ({ registerSubmit }) => {
       <div className='card' style={{ width: '50%' }}>
         <div className='card-body'>
           <h5 className='card-title'>Register</h5>
-          <form id='registerForm'>
+          <form id='registerForm' onSubmit={registerSubmit}>
             <div className='row g-3 align-items-center mb-3'>
               <div className='col-3'>
                 <label htmlFor='name' className='form-label'>
@@ -23,6 +23,7 @@ const Body = ({ registerSubmit }) => {
                   id='name'
                   name='name'
                   placeholder='Name'
+                  required
                 />
               </div>
             </div>
@@ -39,6 +40,7 @@ const Body = ({ registerSubmit }) => {
                   id='email'
                   name='email'
                   placeholder='@email.com'
+                  required
                 />
               </div>
             </div>
@@ -55,6 +57,7 @@ const Body = ({ registerSubmit }) => {
                   id='username'
                   name='username'
                   placeholder='Username'
+                  required
                 />
               </div>
             </div>
@@ -71,15 +74,15 @@ const Body = ({ registerSubmit }) => {
                   id='password'
                   name='password'
                   placeholder='Password'
+                  required
                 />
               </div>
             </div>
             <div className='d-flex justify-content-center'>
               <input
-                type='button'
+                type='submit'
                 className='btn btn-primary'
                 value='Create Account'
-                onClick={() => registerSubmit()}
               />
             </div>
           </form>

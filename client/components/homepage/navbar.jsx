@@ -1,17 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
     <div>
       <nav className='navbar navbar-expand-lg navbar-light bg-light'>
         <div className='container-fluid d-flex justify-space-between ms-3 me-3'>
-          <a className='navbar-brand' href='/'>
+          <Link className='navbar-brand' to='/'>
             <img src='http://localhost:3000/static/logo.png' width='40px' />{' '}
             Calendar Cloud
-          </a>
-          <a className='nav-link active' aria-current='page' href='/login'>
+          </Link>
+          <Link className='nav-link active' to='/login'>
             Sign In / Sign Up
-          </a>
+          </Link>
         </div>
       </nav>
     </div>

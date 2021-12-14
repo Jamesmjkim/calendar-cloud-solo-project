@@ -8,6 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './build'),
     filename: 'bundle.js',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -33,6 +34,7 @@ module.exports = {
       publicPath: '/build',
       //   directory: path.resolve(__dirname, './build'),
     },
+    historyApiFallback: true,
     hot: true,
   },
 };
