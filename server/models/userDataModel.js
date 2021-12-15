@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const MONGO_URI = 'mongodb://localhost/calendar-cloud';
 
 mongoose.connect(MONGO_URI);
+const Schema = mongoose.Schema;
 
 const userDataSchema = new Schema({
   username: { type: String, required: true, unique: true },
@@ -19,9 +20,9 @@ const userDataSchema = new Schema({
       fileName: String,
       fileType: String,
       fileSize: String,
-      route: String,
+      path: String,
     },
   ],
 });
 
-module.exports = mongoose.model('userData', sessionSchema);
+module.exports = mongoose.model('userData', userDataSchema);

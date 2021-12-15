@@ -1,13 +1,41 @@
 import React from 'react';
+import FileUploadModal from './fileUploadModal.jsx';
 
-const Body = () => {
+const Body = ({ openModal, showModal, setShowModal }) => {
+  const onFileLoad = (e) => {
+    const file = e.target.files[0];
+    const data = new FormData();
+    data.append('file', file);
+    data.append('username', sessionStorage.getItem('username'));
+    data.append('date');
+    fetch('http://localhost:3000/upload', {
+      method: 'POST',
+      mode: 'cors',
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.filePath);
+      })
+      .catch((err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+  };
   return (
     <div className='col'>
       <div className='container-fluid d-flex flex-column ms-0 m-5'>
         <div className='container'>
           <h3 className='fw-bold'>List of Files</h3>
           <div>
-            <button className='btn btn-primary btn-lg'>New File</button>
+            <button className='btn btn-primary btn-lg' onClick={openModal}>
+              New File
+            </button>
+            <FileUploadModal
+              showModal={showModal}
+              setShowModal={setShowModal}
+            />
           </div>
         </div>
       </div>
