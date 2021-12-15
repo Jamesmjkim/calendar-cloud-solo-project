@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 
-const FileUploadModal = ({ showModal, setShowModal }) => {
+const FileUploadModal = ({ showModal, setShowModal, onFileLoad }) => {
   const customStyles = {
     content: {
       top: '50%',
@@ -30,7 +30,7 @@ const FileUploadModal = ({ showModal, setShowModal }) => {
                 type='file'
                 className='form-control'
                 id='inputGroupFile'
-                // onChange={onFileLoad}
+                onChange={onFileLoad}
               />
               <label className='input-group-text' htmlFor='inputGroupFile'>
                 Upload

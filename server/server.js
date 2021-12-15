@@ -3,19 +3,19 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const multer = require('multer');
+// const multer = require('multer');
 const fileUpload = require('express-fileupload');
 require('dotenv').config();
 
 const app = express();
-const upload = multer();
+// const upload = multer();
 const PORT = 3000;
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(upload.array());
+// app.use(upload.array());
 app.use(fileUpload());
 
 const loginRouter = require('./routes/login.js');

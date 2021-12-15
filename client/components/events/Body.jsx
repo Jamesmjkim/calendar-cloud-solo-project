@@ -1,13 +1,31 @@
 import React from 'react';
+import EventModal from './EventModal.jsx';
 
-const Body = () => {
+const Body = ({ openModal, showModal, setShowModal }) => {
+  const eventSubmit = (e) => {
+    e.preventDefault();
+    const form = document.getElementById('newEvent');
+    const eventForm = new FormData();
+    eventForm.append('date', form.date.value);
+    eventForm.append('eventName', form.eventName.value);
+    eventForm.append('description', form.description.value);
+    console.log('here');
+    setShowModal(false);
+  };
   return (
     <div className='col'>
       <div className='container-fluid d-flex flex-column ms-0 m-5'>
         <div className='container'>
           <h3 className='fw-bold'>List of Events</h3>
           <div>
-            <button className='btn btn-primary btn-lg'>New Event</button>
+            <button className='btn btn-primary btn-lg' onClick={openModal}>
+              New Event
+            </button>
+            <EventModal
+              showModal={showModal}
+              setShowModal={setShowModal}
+              eventSubmit={eventSubmit}
+            />
           </div>
         </div>
       </div>

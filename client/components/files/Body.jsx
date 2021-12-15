@@ -35,6 +35,7 @@ const Body = ({ openModal, showModal, setShowModal }) => {
             <FileUploadModal
               showModal={showModal}
               setShowModal={setShowModal}
+              onFileLoad={onFileLoad}
             />
           </div>
         </div>

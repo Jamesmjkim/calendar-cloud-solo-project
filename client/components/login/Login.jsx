@@ -8,8 +8,8 @@ const Login = ({ setLoggedIn }) => {
   let attempts = 0;
 
   function loginSubmit(e) {
-    const form = document.getElementById('loginForm');
     e.preventDefault();
+    const form = document.getElementById('loginForm');
     const loginInfo = new FormData();
     loginInfo.append('username', form.username.value);
     loginInfo.append('password', form.password.value);
