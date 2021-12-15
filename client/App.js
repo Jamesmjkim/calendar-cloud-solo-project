@@ -10,7 +10,8 @@ import Settings from './components/settings/Settings.jsx';
 
 const App = function () {
   const [loggedIn, setLoggedIn] = useState(false);
-  if (!loggedIn) {
+  const loggedInSession = sessionStorage.getItem('loggedIn');
+  if (!loggedInSession) {
     return (
       <Switch>
         <Route exact path='/'>
@@ -22,6 +23,7 @@ const App = function () {
         <Route path='/register'>
           <Register />
         </Route>
+        {/* <Route>{<div className='fs-1'>404 Not Found</div>}</Route> */}
       </Switch>
     );
   } else

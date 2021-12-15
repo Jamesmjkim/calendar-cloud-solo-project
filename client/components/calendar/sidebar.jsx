@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Sidebar = () => {
+const Sidebar = ({ setLoggedIn }) => {
+  let name = sessionStorage.getItem('name');
   return (
     <div
       className='container col-2'
@@ -15,36 +17,43 @@ const Sidebar = () => {
         className='d-flex flex-column justify-content-start my-4'
         style={{ width: '14vw', height: '15vh' }}
       >
-        <a className='navbar-brand' href='/'>
+        <Link className='navbar-brand' to='/'>
           <img src='http://localhost:3000/static/logo.png' width='50px' />
-        </a>
-        <a className='navbar-brand fs-4 fw-bold text-black' href='/'>
+        </Link>
+        <Link className='navbar-brand fs-4 fw-bold text-black' to='/'>
           Calendar Cloud
-        </a>
+        </Link>
       </div>
       <div
         className='container d-flex flex-column mx-2'
         style={{ height: '20vh' }}
       >
-        <a className='navbar-brand fs-4 text-black' href='/homepage'>
+        <p className='nav-brand fs-4 text-black'>
+          Welcome, <br />
+          {name}
+        </p>
+        <Link className='navbar-brand fs-4 text-black' to='/calendar'>
           Home
-        </a>
-        <a className='navbar-brand fs-4 text-black' href='/events'>
+        </Link>
+        <Link className='navbar-brand fs-4 text-black' to='/events'>
           Events
-        </a>
-        <a className='navbar-brand fs-4 text-black' href='/files'>
+        </Link>
+        <Link className='navbar-brand fs-4 text-black' to='/files'>
           Files
-        </a>
-        <a className='navbar-brand fs-4 text-black' href='/settings'>
+        </Link>
+        <Link className='navbar-brand fs-4 text-black' to='/settings'>
           Settings
-        </a>
-        <a
-          href='/'
+        </Link>
+        <Link
+          to='/'
           className='navbar-brand fs-4 text-black'
-          onClick={() => setLoggedIn(false)}
+          onClick={() => {
+            sessionStorage.clear();
+            setLoggedIn(false);
+          }}
         >
           Log Out
-        </a>
+        </Link>
       </div>
       <div
         className='container d-flex flex-column justify-content-end mx-auto'

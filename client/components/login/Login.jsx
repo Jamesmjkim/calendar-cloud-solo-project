@@ -23,6 +23,13 @@ const Login = ({ setLoggedIn }) => {
         console.log(res);
         if (res.login) {
           attempts = 0;
+          // setCurUser(res.userInfo);
+          sessionStorage.setItem('name', `${res.userInfo.name}`);
+          sessionStorage.setItem('username', `${res.userInfo.username}`);
+          sessionStorage.setItem('email', `${res.userInfo.email}`);
+
+          sessionStorage.setItem('loggedIn', true);
+
           setLoggedIn(true);
           history.push('/calendar');
         } else if (attempts > 2) {

@@ -15,7 +15,29 @@ const Body = () => {
             style={{ height: '35vh', width: '70vw' }}
           >
             <div className='container'>
-              <div className='fs-4'>Account Information</div>
+              <div className='fs-4 fw-bold'>Account Information</div>
+              <div className='conatiner'>
+                <ul className='m-4' style={{ listStyleType: 'none' }}>
+                  <li className='fs-5 fw-bold my-2'>
+                    Name:{' '}
+                    <span className='fw-normal'>
+                      {sessionStorage.getItem('name')}
+                    </span>
+                  </li>
+                  <li className='fs-5 fw-bold my-2'>
+                    Username:{' '}
+                    <span className='fw-normal'>
+                      {sessionStorage.getItem('username')}
+                    </span>
+                  </li>
+                  <li className='fs-5 fw-bold my-2'>
+                    email:{' '}
+                    <span className='fw-normal'>
+                      {sessionStorage.getItem('email')}
+                    </span>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
