@@ -21,7 +21,6 @@ const Body = ({
     eventForm.append('description', form.description.value);
     eventForm.append('username', sessionStorage.getItem('username'));
     // console.log('here');
-    let updatedEvents;
     fetch('http://localhost:3000/event', {
       method: 'POST',
       mode: 'cors',
@@ -29,9 +28,7 @@ const Body = ({
     })
       .then((res) => res.json())
       .then((res) => {
-        updatedEvents = res;
-        console.log(userEvents);
-        setUserEvents(updatedEvents);
+        setUserEvents(res);
         console.log(res);
       })
       .catch((err) => console.log(err));

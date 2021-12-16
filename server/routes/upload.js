@@ -18,7 +18,7 @@ router.get('/:username/:fileName', downloadFile, (req, res) => {
 });
 
 router.delete('/:username/:fileName', deleteFile, (req, res) => {
-  return res.status(200).json(res.locals.success);
+  return res.status(200).json(res.locals.fileData);
 });
 
 module.exports = router;

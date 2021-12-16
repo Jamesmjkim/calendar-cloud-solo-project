@@ -1,7 +1,16 @@
 import React from 'react';
 import FileUploadModal from './fileUploadModal.jsx';
+import UserFilesBody from './UserFilesBody.jsx';
 
-const Body = ({ openModal, showModal, setShowModal }) => {
+const Body = ({
+  openModal,
+  showModal,
+  setShowModal,
+  userFiles,
+  setUserFiles,
+}) => {
+  const filesBox = [];
+
   const onFileLoad = (e) => {
     const file = e.target.files[0];
     const data = new FormData();
@@ -15,14 +24,41 @@ const Body = ({ openModal, showModal, setShowModal }) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.filePath);
+        setUserFiles(res);
       })
       .catch((err) => {
         if (err) {
           console.log(err);
         }
       });
+    setShowModal(false);
   };
+  const deleteFile = (e) => {
+    const details = e.target.id;
+    fetch(`http://localhost:3000/upload/${details}`, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setUserFiles(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  userFiles.forEach((file, i) => {
+    filesBox.push(
+      <UserFilesBody
+        date={file.date}
+        fileName={file.fileName}
+        fileType={file.fileType}
+        fileSize={file.fileSize}
+        path={file.path}
+        deleteFile={deleteFile}
+        key={i}
+      />
+    );
+  });
+
   return (
     <div className='col'>
       <div className='container-fluid d-flex flex-column ms-0 m-5'>
@@ -54,6 +90,7 @@ const Body = ({ openModal, showModal, setShowModal }) => {
                 <div className='col-3 border'>File size</div>
               </div>
             </div>
+            {filesBox}
           </div>
         </div>
       </div>

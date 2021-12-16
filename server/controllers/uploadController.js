@@ -7,7 +7,7 @@ uploadController.getFiles = (req, res, next) => {
   userData
     .findOne({ username })
     .then((userData) => {
-      res.locals.files = userData.files;
+      res.locals.fileInfo = userData.files;
       // console.log(userData);
       return next();
     })
@@ -45,7 +45,7 @@ uploadController.uploadFile = (req, res, next) => {
       });
     }
     userData
-      .updateOne(
+      .findOneAndUpdate(
         { username },
         {
           $push: {
@@ -57,10 +57,12 @@ uploadController.uploadFile = (req, res, next) => {
               path: `${username}/${file.name}`,
             },
           },
-        }
+        },
+        { returnDocument: 'after' }
       )
       .then((data) => {
-        console.log(data);
+        res.locals.fileData = data.files;
+        // console.log(data);
         return next();
       })
       .catch((err) => {
@@ -83,7 +85,7 @@ uploadController.deleteFile = (req, res, next) => {
   s3.deleteObject(params, function (err, data) {
     if (err) console.log(err, err.stack);
     userData
-      .updateOne(
+      .findOneAndUpdate(
         { username },
         {
           $pull: {
@@ -91,9 +93,14 @@ uploadController.deleteFile = (req, res, next) => {
               path: `${username}/${fileName}`,
             },
           },
-        }
+        },
+        { returnDocument: 'after' }
       )
-      .then((data) => console.log(data))
+      .then((data) => {
+        res.locals.fileData = data.files;
+        // console.log(data);
+        return next();
+      })
       .catch((err) => {
         return next({
           log: `Error with uploadController.deleteFile Error: ${err}`,
@@ -103,7 +110,6 @@ uploadController.deleteFile = (req, res, next) => {
         });
       });
   });
-  return next();
 };
 
 uploadController.downloadFile = (req, res, next) => {
