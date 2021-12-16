@@ -5,8 +5,9 @@ const eventController = {};
 eventController.getEvent = (req, res, next) => {
   const { username } = req.params;
   monDB
-    .findOne(username)
+    .findOne({ username })
     .then((userData) => {
+      console.log(userData.events);
       res.locals.events = userData.events;
       return next();
     })
@@ -22,10 +23,10 @@ eventController.getEvent = (req, res, next) => {
 
 eventController.createEvent = (req, res, next) => {
   const { date, eventName, description, username } = req.body;
-  console.log('here');
+  // console.log('here');
 
   monDB
-    .updateOne(
+    .findOneAndUpdate(
       { username },
       {
         $push: {
@@ -35,10 +36,12 @@ eventController.createEvent = (req, res, next) => {
             description,
           },
         },
-      }
+      },
+      { returnDocument: 'after' }
     )
     .then((update) => {
-      console.log(update);
+      res.locals.events = update.events;
+      // console.log(update);
       return next();
     })
     .catch((err) => {
@@ -54,7 +57,7 @@ eventController.createEvent = (req, res, next) => {
 eventController.deleteEvent = (req, res, next) => {
   const { username, eventName } = req.params;
   monDB
-    .updateOne(
+    .findOneAndUpdate(
       { username },
       {
         $pull: {
@@ -62,9 +65,14 @@ eventController.deleteEvent = (req, res, next) => {
             eventName,
           },
         },
-      }
+      },
+      { returnDocument: 'after' }
     )
-    .then((data) => console.log(data))
+    .then((data) => {
+      res.locals.events = data.events;
+      // console.log(data);
+      return next();
+    })
     .catch((err) => {
       return next({
         log: `Error with uploadController.deleteFile Error: ${err}`,
@@ -73,7 +81,6 @@ eventController.deleteEvent = (req, res, next) => {
         },
       });
     });
-  return next();
 };
 
 module.exports = eventController;

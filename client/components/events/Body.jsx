@@ -1,7 +1,16 @@
 import React from 'react';
 import EventModal from './EventModal.jsx';
+import UserEventsBody from './UserEventsBody.jsx';
 
-const Body = ({ openModal, showModal, setShowModal }) => {
+const Body = ({
+  openModal,
+  showModal,
+  setShowModal,
+  userEvents,
+  setUserEvents,
+}) => {
+  const eventsBox = [];
+
   const eventSubmit = (e) => {
     e.preventDefault();
     const form = document.getElementById('newEvent');
@@ -10,8 +19,9 @@ const Body = ({ openModal, showModal, setShowModal }) => {
     eventForm.append('date', form.date.value); // yyyy/mm/dd
     eventForm.append('eventName', form.eventName.value);
     eventForm.append('description', form.description.value);
-    eventForm.append('username', sessionStorage('username'));
+    eventForm.append('username', sessionStorage.getItem('username'));
     // console.log('here');
+    let updatedEvents;
     fetch('http://localhost:3000/event', {
       method: 'POST',
       mode: 'cors',
@@ -19,11 +29,39 @@ const Body = ({ openModal, showModal, setShowModal }) => {
     })
       .then((res) => res.json())
       .then((res) => {
+        updatedEvents = res;
+        console.log(userEvents);
+        setUserEvents(updatedEvents);
         console.log(res);
       })
       .catch((err) => console.log(err));
     setShowModal(false);
   };
+  const deleteEvent = (e) => {
+    const details = `${sessionStorage.getItem('username')}/${e.target.id}`;
+    // console.log(details);
+    fetch(`http://localhost:3000/event/${details}`, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setUserEvents(res);
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  userEvents.forEach((event, i) => {
+    eventsBox.push(
+      <UserEventsBody
+        eventName={event.eventName}
+        date={event.date}
+        description={event.description}
+        deleteEvent={deleteEvent}
+        key={i}
+      />
+    );
+  });
   return (
     <div className='col'>
       <div className='container-fluid d-flex flex-column ms-0 m-5'>
@@ -54,6 +92,7 @@ const Body = ({ openModal, showModal, setShowModal }) => {
                 <div className='col-6 border'>Description</div>
               </div>
             </div>
+            {eventsBox}
           </div>
         </div>
       </div>

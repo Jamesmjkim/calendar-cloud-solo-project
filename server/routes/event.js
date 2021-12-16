@@ -10,11 +10,11 @@ router.get('/:username', getEvent, (req, res) => {
 });
 
 router.post('/', createEvent, (req, res) => {
-  return res.sendStatus(200);
+  return res.status(200).json(res.locals.events);
 });
 
 router.delete('/:username/:eventName', deleteEvent, (req, res) => {
-  return res.sendStatus(200);
+  return res.status(200).json(res.locals.events);
 });
 
 module.exports = router;

@@ -1,12 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from '../calendar/Sidebar.jsx';
 import Body from './Body.jsx';
 
 const Events = ({ setLoggedIn }) => {
   const [showModal, setShowModal] = useState(false);
+  const [userEvents, setUserEvents] = useState([]);
   const openModal = () => {
     setShowModal((prev) => !prev);
   };
+  useEffect(() => {
+    fetch(`http://localhost:3000/event/${sessionStorage.getItem('username')}`, {
+      method: 'GET',
+      // mode: 'cors',
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setUserEvents(res);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+  // console.log(userEvents);
   return (
     <div className='container-fluid'>
       <div className='row'>
@@ -15,6 +28,8 @@ const Events = ({ setLoggedIn }) => {
           openModal={openModal}
           showModal={showModal}
           setShowModal={setShowModal}
+          userEvents={userEvents}
+          setUserEvents={setUserEvents}
         />
       </div>
     </div>
