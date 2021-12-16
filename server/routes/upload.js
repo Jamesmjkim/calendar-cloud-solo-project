@@ -5,7 +5,8 @@ const router = express.Router();
 const { uploadFile, getFiles, deleteFile } = uploadController;
 
 router.get('/', getFiles, (req, res) => {
-  return res.status(200).json(res.locals.fileInfo);
+  // return res.status(200).json(res.locals.fileInfo);
+  return res.sendStatus(200);
 });
 
 router.post('/', uploadFile, (req, res) => {

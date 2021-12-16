@@ -1,4 +1,5 @@
 const sqlDB = require('./../models/usersModel');
+const monDB = require('./../models/userDataModel');
 const encrpytPassword = require('./../encryptPassword');
 
 const { hashPassword } = encrpytPassword;
@@ -19,6 +20,17 @@ registerController.createUser = async (req, res, next) => {
     .query(query, params)
     .then((userData) => {
       console.log(userData.rows);
+      monDB
+        .create({ username })
+        .then((res) => console.log(res))
+        .catch((err) => {
+          return next({
+            log: `Error with registerController.createUser Error: ${err}`,
+            message: {
+              err: 'registerController.createUser ERROR: Check server logs for details',
+            },
+          });
+        });
       return next();
     })
     .catch((err) => {

@@ -3,24 +3,22 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-// const multer = require('multer');
 const fileUpload = require('express-fileupload');
 require('dotenv').config();
 
 const app = express();
-// const upload = multer();
 const PORT = 3000;
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(upload.array());
 app.use(fileUpload());
 
 const loginRouter = require('./routes/login.js');
 const registerRouter = require('./routes/register.js');
 const uploadRouter = require('./routes/upload.js');
+const eventRouter = require('./routes/event.js');
 
 app.use(
   '/static',
@@ -30,6 +28,7 @@ app.use(
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/upload', uploadRouter);
+app.use('/event', eventRouter);
 
 if (process.env.NODE_ENV === 'production') {
   app.use('/build', express.static(path.resolve(__dirname, './../build')));

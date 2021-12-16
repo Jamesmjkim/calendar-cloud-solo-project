@@ -5,11 +5,23 @@ const Body = ({ openModal, showModal, setShowModal }) => {
   const eventSubmit = (e) => {
     e.preventDefault();
     const form = document.getElementById('newEvent');
+    // console.log(form.date.value, form.eventName.value, form.description.value);
     const eventForm = new FormData();
     eventForm.append('date', form.date.value);
     eventForm.append('eventName', form.eventName.value);
     eventForm.append('description', form.description.value);
-    console.log('here');
+    eventForm.append('username', sessionStorage('username'));
+    // console.log('here');
+    fetch('http://localhost:3000/event', {
+      method: 'POST',
+      mode: 'cors',
+      body: eventForm,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
     setShowModal(false);
   };
   return (

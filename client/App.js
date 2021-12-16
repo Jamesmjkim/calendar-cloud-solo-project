@@ -23,7 +23,7 @@ const App = function () {
         <Route path='/register'>
           <Register />
         </Route>
-        {/* <Route>{<div className='fs-1'>404 Not Found</div>}</Route> */}
+        <Route>{<div className='fs-1'>404 Not Found</div>}</Route>
       </Switch>
     );
   } else
