@@ -3,7 +3,7 @@ const monDB = require('./../models/userDataModel');
 const eventController = {};
 
 eventController.getEvent = (req, res, next) => {
-  const { username } = req.body;
+  const { username } = req.params;
   monDB
     .findOne(username)
     .then((userData) => {
@@ -49,6 +49,31 @@ eventController.createEvent = (req, res, next) => {
         },
       });
     });
+};
+
+eventController.deleteEvent = (req, res, next) => {
+  const { username, eventName } = req.params;
+  monDB
+    .updateOne(
+      { username },
+      {
+        $pull: {
+          events: {
+            eventName,
+          },
+        },
+      }
+    )
+    .then((data) => console.log(data))
+    .catch((err) => {
+      return next({
+        log: `Error with uploadController.deleteFile Error: ${err}`,
+        message: {
+          err: 'uploadController.deleteFile ERROR: Check server logs for details',
+        },
+      });
+    });
+  return next();
 };
 
 module.exports = eventController;

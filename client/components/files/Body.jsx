@@ -7,7 +7,7 @@ const Body = ({ openModal, showModal, setShowModal }) => {
     const data = new FormData();
     data.append('file', file);
     data.append('username', sessionStorage.getItem('username'));
-    data.append('date', new Date().toDateString());
+    data.append('date', new Date().toLocaleDateString('en-US')); // mm/dd/yyyy
     fetch('http://localhost:3000/upload', {
       method: 'POST',
       mode: 'cors',

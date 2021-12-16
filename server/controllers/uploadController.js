@@ -3,41 +3,12 @@ const userData = require('./../models/userDataModel');
 const s3 = require('./../aws.js');
 
 uploadController.getFiles = (req, res, next) => {
-  const { username } = req.body;
-  console.log(username, req.body);
-  const params = {
-    Bucket: process.env.AWS_BUCKET_NAME,
-    Key: 'qwer/VS code keyboard-shortcuts-macos.pdf',
-  };
-  s3.getObject(params, (err, data) => {
-    if (err)
-      return next({
-        log: `Error with uploadController.getFiles Error: ${err}`,
-        message: {
-          err: 'uploadController.getFiles ERROR: Check server logs for details',
-        },
-      });
-    else console.log(data);
-  });
+  const { username } = req.params;
   userData
     .findOne({ username })
     .then((userData) => {
-      console.log(userData);
-      // const params = {
-      //   Bucket: process.env.AWS_BUCKET_NAME,
-      //   Key: userData.files[0].path,
-      // };
-      // s3.getObject(params, (err, data) => {
-      //   if (err)
-      //     return next({
-      //       log: `Error with uploadController.getFiles Error: ${err}`,
-      //       message: {
-      //         err: 'uploadController.getFiles ERROR: Check server logs for details',
-      //       },
-      //     });
-      //   else console.log(data);
-      // });
-      // res.locals.files = data.files;
+      res.locals.files = userData.files;
+      // console.log(userData);
       return next();
     })
     .catch((err) => {
@@ -100,6 +71,57 @@ uploadController.uploadFile = (req, res, next) => {
           },
         });
       });
+  });
+};
+
+uploadController.deleteFile = (req, res, next) => {
+  const { username, fileName } = req.params;
+  var params = {
+    Bucket: process.env.AWS_BUCKET_NAME,
+    Key: `${username}/${fileName}`,
+  };
+  s3.deleteObject(params, function (err, data) {
+    if (err) console.log(err, err.stack);
+    userData
+      .updateOne(
+        { username },
+        {
+          $pull: {
+            files: {
+              path: `${username}/${fileName}`,
+            },
+          },
+        }
+      )
+      .then((data) => console.log(data))
+      .catch((err) => {
+        return next({
+          log: `Error with uploadController.deleteFile Error: ${err}`,
+          message: {
+            err: 'uploadController.deleteFile ERROR: Check server logs for details',
+          },
+        });
+      });
+  });
+  return next();
+};
+
+uploadController.downloadFile = (req, res, next) => {
+  const { username, fileName } = req.params;
+  const params = {
+    Bucket: process.env.AWS_BUCKET_NAME,
+    Key: `${username}/${fileName}`,
+  };
+  s3.getObject(params, (err, data) => {
+    if (err)
+      return next({
+        log: `Error with uploadController.downloadFile Error: ${err}`,
+        message: {
+          err: 'uploadController.downloadFile ERROR: Check server logs for details',
+        },
+      });
+    else res.locals.file = data.Body;
+    return next();
   });
 };
 module.exports = uploadController;

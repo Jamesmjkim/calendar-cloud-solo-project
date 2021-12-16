@@ -7,7 +7,7 @@ const Body = ({ openModal, showModal, setShowModal }) => {
     const form = document.getElementById('newEvent');
     // console.log(form.date.value, form.eventName.value, form.description.value);
     const eventForm = new FormData();
-    eventForm.append('date', form.date.value);
+    eventForm.append('date', form.date.value); // yyyy/mm/dd
     eventForm.append('eventName', form.eventName.value);
     eventForm.append('description', form.description.value);
     eventForm.append('username', sessionStorage('username'));
