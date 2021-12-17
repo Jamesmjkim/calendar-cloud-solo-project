@@ -3,21 +3,22 @@ import React from 'react';
 const Body = () => {
   return (
     <div
-      className='d-flex flex-column vh-100'
+      className='d-flex flex-column vh-100 pt-5'
       style={{ backgroundColor: '#F0F8FF' }}
     >
       <div className='container d-flex justify-content-evenly align-items-center '>
-        <div className='fs-1 fw-bold'>
+        <div className='fs-1 fw-bold pe-3'>
           Personal Calendar <br />
           With File Access
         </div>
         <img
           src='http://localhost:3000/static/demo_page.png'
           alt=''
-          className='rounded float-end img-fluid'
+          className='rounded float-end img-fluid border shadow  rounded'
+          // style={{ width: '800px', height: '600px' }}
         />
       </div>
-      <div className='container d-flex flex-column'>
+      <div className='container d-flex flex-column mt-3'>
         <div className='fs-3'>Description</div>
         <div className='fs-5 fw-light flex-grow-1'>
           Calendar application to save events and upload files to the cloud.
