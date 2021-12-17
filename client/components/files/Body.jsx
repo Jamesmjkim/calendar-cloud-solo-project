@@ -8,6 +8,7 @@ const Body = ({
   setShowModal,
   userFiles,
   setUserFiles,
+  formatBytes,
 }) => {
   const filesBox = [];
 
@@ -24,6 +25,9 @@ const Body = ({
     })
       .then((res) => res.json())
       .then((res) => {
+        res.forEach((file) => {
+          file.fileSize = formatBytes(file.fileSize);
+        });
         setUserFiles(res);
       })
       .catch((err) => {
@@ -40,6 +44,9 @@ const Body = ({
     })
       .then((res) => res.json())
       .then((res) => {
+        res.forEach((file) => {
+          file.fileSize = formatBytes(file.fileSize);
+        });
         setUserFiles(res);
       })
       .catch((err) => console.log(err));

@@ -31,13 +31,11 @@ const Files = ({ setLoggedIn }) => {
       .then((res) => {
         res.forEach((file) => {
           file.fileSize = formatBytes(file.fileSize);
-          // console.log(file.fileSize);
         });
         setUserFiles(res);
       })
       .catch((err) => console.log(err));
   }, []);
-  // console.log(showModal);
   return (
     <div className='container-fluid'>
       <div className='row'>
@@ -48,6 +46,7 @@ const Files = ({ setLoggedIn }) => {
           setShowModal={setShowModal}
           userFiles={userFiles}
           setUserFiles={setUserFiles}
+          formatBytes={formatBytes}
         />
       </div>
     </div>

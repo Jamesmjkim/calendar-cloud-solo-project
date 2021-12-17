@@ -1,6 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import EventBlock from './EventBlock.jsx';
+import FileBlock from './FileBlock.jsx';
 
-const DaySquare = ({ day, curDate }) => {
+const DaySquare = ({ day, curDate, fileToday, eventToday }) => {
+  // console.log(fileToday, eventToday);
+  const [showEventModal, setShowEventModal] = useState(false);
+  const [showFileModal, setShowFileModal] = useState(false);
+  const openEventModal = () => {
+    setShowEventModal((prev) => !prev);
+  };
+  const openFileModal = () => {
+    setShowFileModal((prev) => !prev);
+  };
   return (
     <div
       className='card border border-secondary'
@@ -17,6 +28,28 @@ const DaySquare = ({ day, curDate }) => {
         ) : (
           <div className='card-title fs-6'>{day}</div>
         )}
+        <div className='container-fluid p-0'>
+          {fileToday.length !== 0 || eventToday.length !== 0 ? (
+            <div>
+              {eventToday.length !== 0 ? (
+                <EventBlock
+                  eventToday={eventToday}
+                  showEventModal={showEventModal}
+                  setShowEventModal={setShowEventModal}
+                  openEventModal={openEventModal}
+                />
+              ) : null}
+              {fileToday.length !== 0 ? (
+                <FileBlock
+                  fileToday={fileToday}
+                  showFileModal={showFileModal}
+                  setShowFileModal={setShowFileModal}
+                  openFileModal={openFileModal}
+                />
+              ) : null}
+            </div>
+          ) : null}
+        </div>
       </div>
     </div>
   );

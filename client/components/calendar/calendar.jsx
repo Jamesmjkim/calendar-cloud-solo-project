@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Weekdays from './components/Weekdays.jsx';
 import DayBlock from './components/DayBlock.jsx';
 
-const Calendar = () => {
+const Calendar = ({ events, files }) => {
   const [curMonth, setCurMonth] = useState(0);
 
   const todayDate = new Date();
@@ -19,9 +19,20 @@ const Calendar = () => {
     month: 'long',
     year: 'numeric',
   });
+  const currentMonth = (firstDayOfMonth.getMonth() + 1 + curMonth).toString();
   const [monthString, currYear, weekday] = dateString.split(' ');
   // console.log(monthString, currYear, weekday);
-
+  // console.log(events, files);
+  const currEvents = [];
+  const currFiles = [];
+  events.forEach((event) => {
+    if (event.month === currentMonth || event.year === currYear)
+      currEvents.push(event);
+  });
+  files.forEach((file) => {
+    if (file.month === currentMonth || file.year === currYear)
+      currFiles.push(file);
+  });
   return (
     <div className='col'>
       <div className='container-fluid my-5'>
@@ -52,6 +63,10 @@ const Calendar = () => {
           weekday={weekday}
           daysInMonth={daysInMonth}
           curDate={curDate}
+          currentMonth={currentMonth}
+          currYear={currYear}
+          events={currEvents}
+          files={currFiles}
         />
       </div>
     </div>
