@@ -24,6 +24,15 @@ const Login = ({ setLoggedIn }) => {
         if (res.login) {
           attempts = 0;
           // setCurUser(res.userInfo);
+          fetch(
+            'https://goquotes-api.herokuapp.com/api/v1/random/1?type=tag&val=motivational',
+            { method: 'GET' }
+          )
+            .then((quote) => quote.json())
+            .then((quote) => {
+              sessionStorage.setItem('quote', quote.quotes[0].text);
+              sessionStorage.setItem('quoteAuthor', quote.quotes[0].author);
+            });
           sessionStorage.setItem('name', `${res.userInfo.name}`);
           sessionStorage.setItem('username', `${res.userInfo.username}`);
           sessionStorage.setItem('email', `${res.userInfo.email}`);

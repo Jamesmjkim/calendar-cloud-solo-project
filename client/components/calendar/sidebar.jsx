@@ -59,7 +59,10 @@ const Sidebar = ({ setLoggedIn }) => {
         className='container d-flex flex-column justify-content-end mx-auto'
         style={{ height: '60vh' }}
       >
-        <p className='fs-5'>quotes from api</p>
+        <p className='fs-5 fst-italic'>
+          {sessionStorage.getItem('quote')} <br />
+          {sessionStorage.getItem('quoteAuthor')}
+        </p>
         <p className='text-muted' style={{ fontSize: '12px' }}>
           Website created by James Kim
         </p>
