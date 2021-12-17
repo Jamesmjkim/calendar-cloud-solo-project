@@ -44,7 +44,7 @@ const Body = ({
       })
       .catch((err) => console.log(err));
   };
-
+  userFiles.sort((a, b) => (a.date > b.date ? 1 : -1));
   userFiles.forEach((file, i) => {
     filesBox.push(
       <UserFilesBody

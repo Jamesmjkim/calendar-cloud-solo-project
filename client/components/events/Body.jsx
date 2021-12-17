@@ -43,11 +43,11 @@ const Body = ({
       .then((res) => res.json())
       .then((res) => {
         setUserEvents(res);
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => console.log(err));
   };
-
+  userEvents.sort((a, b) => (a.date > b.date ? 1 : -1));
   userEvents.forEach((event, i) => {
     eventsBox.push(
       <UserEventsBody

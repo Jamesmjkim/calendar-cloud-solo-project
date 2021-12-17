@@ -53,7 +53,7 @@ uploadController.uploadFile = (req, res, next) => {
               date: date,
               fileName: fileName,
               fileType: fileType,
-              fileSize: file.fileSize,
+              fileSize: file.size,
               path: `${username}/${file.name}`,
             },
           },

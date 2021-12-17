@@ -12,7 +12,14 @@ const UserFilesBody = ({
     <div className='container' style={{ padding: '0px 12px 0px 12px' }}>
       <div className='row'>
         <div className='col-3 border'>{date}</div>
-        <div className='col-3 border'>{fileName}</div>
+        <div className='col-3 border'>
+          <a
+            href={`http://localhost:3000/upload/${path}`}
+            className=' text-black'
+          >
+            {fileName}
+          </a>
+        </div>
         <div className='col-3 border'>{fileType}</div>
         <div className='col-2 border'>{fileSize}</div>
         <button className='col-1 border' id={path} onClick={deleteFile}>
