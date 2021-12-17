@@ -19,19 +19,29 @@ const Calendar = ({ events, files }) => {
     month: 'long',
     year: 'numeric',
   });
-  const currentMonth = (firstDayOfMonth.getMonth() + 1 + curMonth).toString();
+  const currentMonth = (firstDayOfMonth.getMonth() + 1).toString();
   const [monthString, currYear, weekday] = dateString.split(' ');
   // console.log(monthString, currYear, weekday);
   // console.log(events, files);
+  // console.log(currentMonth);
+  // console.log(currYear);
   const currEvents = [];
   const currFiles = [];
   events.forEach((event) => {
-    if (event.month === currentMonth || event.year === currYear)
+    if (
+      Number(event.month) === Number(currentMonth) &&
+      Number(event.year) === Number(currYear)
+    ) {
       currEvents.push(event);
+    }
   });
   files.forEach((file) => {
-    if (file.month === currentMonth || file.year === currYear)
+    if (
+      Number(file.month) === Number(currentMonth) &&
+      Number(file.year) === Number(currYear)
+    ) {
       currFiles.push(file);
+    }
   });
   return (
     <div className='col'>
