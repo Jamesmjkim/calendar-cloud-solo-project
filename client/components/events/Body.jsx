@@ -29,7 +29,7 @@ const Body = ({
       .then((res) => res.json())
       .then((res) => {
         setUserEvents(res);
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => console.log(err));
     setShowModal(false);
