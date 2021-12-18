@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import HomePage from './components/homepage/HomePage.jsx';
-import Login from './components/login/Login.jsx';
-import Register from './components/register/Register.jsx';
-import CalendarPage from './components/calendar/CalendarPage.jsx';
-import Events from './components/events/Events.jsx';
-import Files from './components/files/Files.jsx';
-import Settings from './components/settings/Settings.jsx';
+import HomePage from './components/homepage/homePage.jsx';
+import Login from './components/login/login.jsx';
+import Register from './components/register/register.jsx';
+import CalendarPage from './components/calendar/calendarPage.jsx';
+import Events from './components/events/events.jsx';
+import Files from './components/files/files.jsx';
+import Settings from './components/settings/settings.jsx';
 
 const App = function () {
   const [loggedIn, setLoggedIn] = useState(false);
