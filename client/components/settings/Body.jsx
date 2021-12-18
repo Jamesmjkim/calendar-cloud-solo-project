@@ -12,7 +12,7 @@ const Body = () => {
         <div className='d-flex justify-content-center'>
           <div
             className='border border-dark'
-            style={{ height: '35vh', width: '70vw' }}
+            style={{ height: '35vh', width: '70vw', maxWidth: '1252.39px' }}
           >
             <div className='container'>
               <div className='fs-4 fw-bold'>Account Information</div>

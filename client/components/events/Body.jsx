@@ -80,7 +80,7 @@ const Body = ({
         <div className='d-flex justify-content-center'>
           <div
             className='border border-dark'
-            style={{ height: '75vh', width: '70vw' }}
+            style={{ height: '75vh', width: '70vw', maxWidth: '1252.39px' }}
           >
             <div className='container' style={{ padding: '0px 12px 0px 12px' }}>
               <div className='row'>

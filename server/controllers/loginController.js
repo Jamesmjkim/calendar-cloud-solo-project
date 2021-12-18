@@ -13,17 +13,27 @@ loginController.verifyUser = async (req, res, next) => {
 
   sqlDB.query(query, params).then(async (data) => {
     const verified = await comparePassword(password, data.rows[0].password);
-    if (verified) {
-      res.locals.verified = true;
-      res.locals.userInfo = {
-        name: data.rows[0].name,
-        username: data.rows[0].username,
-        email: data.rows[0].email,
-      };
-      return next();
-    } else {
-      res.locals.verified = false;
-      return next();
+    try {
+      if (verified) {
+        res.locals.verified = true;
+        res.locals.userInfo = {
+          name: data.rows[0].name,
+          username: data.rows[0].username,
+          email: data.rows[0].email,
+        };
+        return next();
+      } else {
+        res.locals.verified = false;
+        return next();
+      }
+    } catch (err) {
+      if (err)
+        return next({
+          log: `Error with loginController.verifyUser Error: ${err}`,
+          message: {
+            err: 'loginController.verifyUser ERROR: Check server logs for details',
+          },
+        });
     }
   });
 };

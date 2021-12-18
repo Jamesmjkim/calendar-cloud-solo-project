@@ -12,7 +12,12 @@ const EventBlock = ({
   return (
     <button
       className='border border-primary text-start mb-1 p-0'
-      style={{ fontSize: '11px', width: '8vw', background: 'none' }}
+      style={{
+        fontSize: '11px',
+        width: '8vw',
+        background: 'none',
+        maxWidth: '143.36px',
+      }}
       onClick={openEventModal}
     >
       <EventBlockModal

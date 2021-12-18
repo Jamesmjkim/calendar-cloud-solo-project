@@ -7,7 +7,7 @@ eventController.getEvent = (req, res, next) => {
   monDB
     .findOne({ username })
     .then((userData) => {
-      console.log(userData.events);
+      // console.log(userData.events);
       res.locals.events = userData.events;
       return next();
     })
