@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from './Navbar.jsx';
-import Body from './Body.jsx';
+import Navbar from './navbar.jsx';
+import Body from './body.jsx';
 
 const HomePage = () => {
   return (

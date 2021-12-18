@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Calendar from './Calendar.jsx';
-import Sidebar from './Sidebar.jsx';
+import Calendar from './calendar.jsx';
+import Sidebar from './sidebar.jsx';
 
 const CalendarPage = ({ setLoggedIn, curUser, setCurUser }) => {
   const [events, setEvents] = useState([]);

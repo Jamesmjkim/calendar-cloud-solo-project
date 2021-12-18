@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import EventBlock from './EventBlock.jsx';
-import FileBlock from './FileBlock.jsx';
+import EventBlock from './eventBlock.jsx';
+import FileBlock from './fileBlock.jsx';
 
 const DaySquare = ({ day, curDate, fileToday, eventToday }) => {
   // console.log(fileToday, eventToday);

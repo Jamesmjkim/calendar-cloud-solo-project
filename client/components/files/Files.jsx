@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Sidebar from '../calendar/Sidebar.jsx';
-import Body from './Body.jsx';
+import Sidebar from '../calendar/sidebar.jsx';
+import Body from './body.jsx';
 
 const Files = ({ setLoggedIn }) => {
   const [showModal, setShowModal] = useState(false);

@@ -1,5 +1,5 @@
 import React from 'react';
-import FileBlockModal from './FileBlockModal.jsx';
+import FileBlockModal from './fileBlockModal.jsx';
 const FileBlock = ({
   fileToday,
   showFileModal,

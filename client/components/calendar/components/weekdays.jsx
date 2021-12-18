@@ -1,5 +1,5 @@
 import React from 'react';
-import WeekdayBlock from './WeekdayBlock.jsx';
+import WeekdayBlock from './weekdayBlock.jsx';
 
 const Weekdays = () => {
   const days = [

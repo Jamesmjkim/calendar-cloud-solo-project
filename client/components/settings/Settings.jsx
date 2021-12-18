@@ -1,6 +1,6 @@
 import React from 'react';
-import Sidebar from '../calendar/Sidebar.jsx';
-import Body from './Body.jsx';
+import Sidebar from '../calendar/sidebar.jsx';
+import Body from './body.jsx';
 
 const Settings = ({ setLoggedIn }) => {
   return (

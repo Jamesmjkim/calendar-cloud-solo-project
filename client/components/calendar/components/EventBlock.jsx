@@ -1,5 +1,5 @@
 import React from 'react';
-import EventBlockModal from './EventBlockModal.jsx';
+import EventBlockModal from './eventBlockModal.jsx';
 
 const EventBlock = ({
   eventToday,

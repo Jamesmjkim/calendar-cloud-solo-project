@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import FileUploadModal from './fileUploadModal.jsx';
-import UserFilesBody from './UserFilesBody.jsx';
+import UserFilesBody from './userFilesBody.jsx';
 
 const Body = ({
   openModal,

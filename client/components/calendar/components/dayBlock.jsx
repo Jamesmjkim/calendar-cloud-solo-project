@@ -1,6 +1,6 @@
 import React from 'react';
-import DaySquare from './DaySquare.jsx';
-import PadDays from './PadDays.jsx';
+import DaySquare from './daySquare.jsx';
+import PadDays from './padDays.jsx';
 
 const DayBlock = ({
   weekday,

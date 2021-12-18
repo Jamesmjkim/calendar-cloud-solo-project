@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from './Navbar.jsx';
-import Body from './Body.jsx';
+import Navbar from './navbar.jsx';
+import Body from './body.jsx';
 import { useHistory } from 'react-router-dom';
 
 const Register = () => {

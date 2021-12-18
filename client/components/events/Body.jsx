@@ -1,6 +1,6 @@
 import React from 'react';
-import EventModal from './EventModal.jsx';
-import UserEventsBody from './UserEventsBody.jsx';
+import EventModal from './eventModal.jsx';
+import UserEventsBody from './userEventsBody.jsx';
 
 const Body = ({
   openModal,
