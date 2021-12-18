@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Calendar Cloud",
   "main": "index.js",
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x"
+  },
   "scripts": {
     "start": "NODE_ENV=production node server/server.js",
     "build": "NODE_ENV=production webpack",
