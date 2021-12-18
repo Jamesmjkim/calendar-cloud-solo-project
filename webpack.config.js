@@ -37,8 +37,4 @@ module.exports = {
     historyApiFallback: true,
     hot: true,
   },
-  resolve: {
-    extensions: ['.js', '.jsx'],
-    symlinks: false,
-  },
 };
