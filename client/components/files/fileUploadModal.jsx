@@ -1,7 +1,12 @@
 import React from 'react';
 import Modal from 'react-modal';
 
-const FileUploadModal = ({ showModal, setShowModal, onFileLoad }) => {
+const FileUploadModal = ({
+  showModal,
+  setShowModal,
+  onFileLoad,
+  fileToBig,
+}) => {
   const customStyles = {
     content: {
       top: '50%',
@@ -36,6 +41,11 @@ const FileUploadModal = ({ showModal, setShowModal, onFileLoad }) => {
                 Upload
               </label>
             </div>
+            {fileToBig ? (
+              <div className='text-danger'>
+                File too large, Choose file less than 5 mb
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

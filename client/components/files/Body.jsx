@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FileUploadModal from './fileUploadModal.jsx';
 import UserFilesBody from './UserFilesBody.jsx';
 
@@ -11,31 +11,39 @@ const Body = ({
   formatBytes,
 }) => {
   const filesBox = [];
+  const [fileToBig, setFileTooBig] = useState(false);
 
   const onFileLoad = (e) => {
     const file = e.target.files[0];
-    const data = new FormData();
-    data.append('file', file);
-    data.append('username', sessionStorage.getItem('username'));
-    data.append('date', new Date().toLocaleDateString('en-US')); // mm/dd/yyyy
-    fetch('http://localhost:3000/upload', {
-      method: 'POST',
-      mode: 'cors',
-      body: data,
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        res.forEach((file) => {
-          file.fileSize = formatBytes(file.fileSize);
-        });
-        setUserFiles(res);
+    console.log(file);
+    const maxFileSize = 5242880;
+    if (file.size < maxFileSize) {
+      const data = new FormData();
+      data.append('file', file);
+      data.append('username', sessionStorage.getItem('username'));
+      data.append('date', new Date().toLocaleDateString('en-US')); // mm/dd/yyyy
+      fetch('http://localhost:3000/upload', {
+        method: 'POST',
+        mode: 'cors',
+        body: data,
       })
-      .catch((err) => {
-        if (err) {
-          console.log(err);
-        }
-      });
-    setShowModal(false);
+        .then((res) => res.json())
+        .then((res) => {
+          res.forEach((file) => {
+            file.fileSize = formatBytes(file.fileSize);
+          });
+          setUserFiles(res);
+        })
+        .catch((err) => {
+          if (err) {
+            console.log(err);
+          }
+        });
+      setShowModal(false);
+      setFileTooBig(false);
+    } else {
+      setFileTooBig(true);
+    }
   };
   const deleteFile = (e) => {
     const details = e.target.id;
@@ -79,6 +87,7 @@ const Body = ({
               showModal={showModal}
               setShowModal={setShowModal}
               onFileLoad={onFileLoad}
+              fileToBig={fileToBig}
             />
           </div>
         </div>
