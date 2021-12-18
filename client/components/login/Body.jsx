@@ -20,6 +20,7 @@ const Body = ({ loginSubmit }) => {
                 className='form-control'
                 id='username'
                 name='username'
+                placeholder='Type your username'
               />
             </div>
             <div className='mb-3'>
@@ -31,9 +32,14 @@ const Body = ({ loginSubmit }) => {
                 className='form-control'
                 id='password'
                 name='password'
+                placeholder='Type your password'
               />
             </div>
-            <input type='submit' className='btn btn-primary' value='Login' />
+            <input
+              type='submit'
+              className='btn btn-primary mb-2'
+              value='Login'
+            />
           </form>
           <button className='btn btn-secondary'>
             <Link to='/register' className='text-decoration-none text-white'>

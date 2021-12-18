@@ -39,7 +39,7 @@ const Body = ({ registerSubmit }) => {
                   className='form-control'
                   id='email'
                   name='email'
-                  placeholder='@email.com'
+                  placeholder='example@email.com'
                   required
                 />
               </div>
