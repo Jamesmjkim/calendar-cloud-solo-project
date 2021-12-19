@@ -18,7 +18,7 @@ const Register = () => {
     registerInfo.append('username', form.username.value);
     registerInfo.append('password', form.password.value);
 
-    // fetch(`http://localhost:${process.env.PORT}/register`, {
+    // fetch(`/register`, {
     //   method: 'POST',
     //   mode: 'cors',
     //   body: registerInfo,

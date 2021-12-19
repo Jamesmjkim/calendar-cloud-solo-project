@@ -13,10 +13,7 @@ const UserFilesBody = ({
       <div className='row'>
         <div className='col-3 border'>{date}</div>
         <div className='col-3 border'>
-          <a
-            href={`http://localhost:${process.env.PORT}/upload/${path}`}
-            className=' text-black'
-          >
+          <a href={`/upload/${path}`} className=' text-black'>
             {fileName}
           </a>
         </div>

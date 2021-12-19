@@ -22,7 +22,7 @@ const Body = ({
       data.append('file', file);
       data.append('username', sessionStorage.getItem('username'));
       data.append('date', new Date().toLocaleDateString('en-US')); // mm/dd/yyyy
-      fetch('http://localhost:${process.env.PORT}/upload', {
+      fetch('/upload', {
         method: 'POST',
         mode: 'cors',
         body: data,
@@ -47,7 +47,7 @@ const Body = ({
   };
   const deleteFile = (e) => {
     const details = e.target.id;
-    fetch(`http://localhost:${process.env.PORT}/upload/${details}`, {
+    fetch(`/upload/${details}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())

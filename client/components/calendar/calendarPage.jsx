@@ -6,12 +6,7 @@ const CalendarPage = ({ setLoggedIn, curUser, setCurUser }) => {
   const [events, setEvents] = useState([]);
   const [files, setFiles] = useState([]);
   useEffect(() => {
-    fetch(
-      `http://localhost:${process.env.PORT}/calendar/${sessionStorage.getItem(
-        'username'
-      )}`,
-      { method: 'GET' }
-    )
+    fetch(`/calendar/${sessionStorage.getItem('username')}`, { method: 'GET' })
       .then((res) => res.json())
       .then((res) => {
         // console.log(res);

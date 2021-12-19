@@ -21,14 +21,9 @@ const Files = ({ setLoggedIn }) => {
   };
 
   useEffect(() => {
-    fetch(
-      `http://localhost:${process.env.PORT}/upload/${sessionStorage.getItem(
-        'username'
-      )}`,
-      {
-        method: 'GET',
-      }
-    )
+    fetch(`/upload/${sessionStorage.getItem('username')}`, {
+      method: 'GET',
+    })
       .then((res) => res.json())
       .then((res) => {
         res.forEach((file) => {
