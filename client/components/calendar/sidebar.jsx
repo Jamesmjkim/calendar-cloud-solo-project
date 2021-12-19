@@ -18,7 +18,10 @@ const Sidebar = ({ setLoggedIn }) => {
         style={{ width: '14vw', height: '15vh' }}
       >
         <Link className='navbar-brand' to='/'>
-          <img src='http://localhost:3000/static/logo.png' width='50px' />
+          <img
+            src={`http://localhost:${process.env.PORT}/static/logo.png`}
+            width='50px'
+          />
         </Link>
         <Link className='navbar-brand fs-4 fw-bold text-black' to='/'>
           Calendar Cloud

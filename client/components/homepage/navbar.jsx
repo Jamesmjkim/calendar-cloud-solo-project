@@ -7,7 +7,10 @@ const Navbar = () => {
       <nav className='navbar navbar-expand-lg navbar-light bg-light'>
         <div className='container-fluid d-flex justify-space-between ms-3 me-3'>
           <Link className='navbar-brand' to='/'>
-            <img src='http://localhost:3000/static/logo.png' width='40px' />{' '}
+            <img
+              src={`http://localhost:${process.env.PORT}/static/logo.png`}
+              width='40px'
+            />{' '}
             Calendar Cloud
           </Link>
           <Link className='nav-link active' to='/login'>

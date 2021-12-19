@@ -9,10 +9,15 @@ const Events = ({ setLoggedIn }) => {
     setShowModal((prev) => !prev);
   };
   useEffect(() => {
-    fetch(`http://localhost:3000/event/${sessionStorage.getItem('username')}`, {
-      method: 'GET',
-      // mode: 'cors',
-    })
+    fetch(
+      `http://localhost:${process.env.PORT}/event/${sessionStorage.getItem(
+        'username'
+      )}`,
+      {
+        method: 'GET',
+        // mode: 'cors',
+      }
+    )
       .then((res) => res.json())
       .then((res) => {
         setUserEvents(res);

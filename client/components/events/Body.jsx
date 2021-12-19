@@ -21,7 +21,7 @@ const Body = ({
     eventForm.append('description', form.description.value);
     eventForm.append('username', sessionStorage.getItem('username'));
     // console.log('here');
-    fetch('http://localhost:3000/event', {
+    fetch(`http://localhost:${process.env.PORT}/event`, {
       method: 'POST',
       mode: 'cors',
       body: eventForm,
@@ -37,7 +37,7 @@ const Body = ({
   const deleteEvent = (e) => {
     const details = `${sessionStorage.getItem('username')}/${e.target.id}`;
     // console.log(details);
-    fetch(`http://localhost:3000/event/${details}`, {
+    fetch(`http://localhost:${process.env.PORT}/event/${details}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())

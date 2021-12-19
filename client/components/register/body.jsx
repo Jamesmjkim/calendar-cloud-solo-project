@@ -86,6 +86,9 @@ const Body = ({ registerSubmit }) => {
               />
             </div>
           </form>
+          <div className='fs-5 text-danger text-center'>
+            Registration Closed
+          </div>
         </div>
       </div>
     </div>

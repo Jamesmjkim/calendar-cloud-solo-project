@@ -13,7 +13,7 @@ const Login = ({ setLoggedIn }) => {
     const loginInfo = new FormData();
     loginInfo.append('username', form.username.value);
     loginInfo.append('password', form.password.value);
-    fetch('http://localhost:3000/login', {
+    fetch(`http://localhost:${process.env.PORT}/login`, {
       method: 'POST',
       mode: 'cors',
       body: loginInfo,

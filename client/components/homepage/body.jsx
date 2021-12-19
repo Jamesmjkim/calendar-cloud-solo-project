@@ -12,7 +12,7 @@ const Body = () => {
           With File Access
         </div>
         <img
-          src='http://localhost:3000/static/demo_page.png'
+          src={`http://localhost:${process.env.PORT}/static/demo_page.png`}
           alt=''
           className='rounded float-end img-fluid border shadow  rounded'
           // style={{ width: '800px', height: '600px' }}

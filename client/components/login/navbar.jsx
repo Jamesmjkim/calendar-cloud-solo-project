@@ -6,7 +6,10 @@ const Navbar = () => {
       <nav className='navbar navbar-expand-lg navbar-light bg-light'>
         <div className='container-fluid ms-3 me-3'>
           <a className='navbar-brand' href='/'>
-            <img src='http://localhost:3000/static/logo.png' width='40px' />{' '}
+            <img
+              src={`http://localhost:${process.env.PORT}/static/logo.png`}
+              width='40px'
+            />{' '}
             Calendar Cloud
           </a>
         </div>

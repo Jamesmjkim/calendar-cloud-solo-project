@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+
 const mode = process.env.NODE_ENV;
 
 module.exports = {
@@ -28,6 +30,7 @@ module.exports = {
       template: './client/index.html',
       cache: false,
     }),
+    new Dotenv(),
   ],
   devServer: {
     static: {

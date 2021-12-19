@@ -18,19 +18,20 @@ const Register = () => {
     registerInfo.append('username', form.username.value);
     registerInfo.append('password', form.password.value);
 
-    fetch('http://localhost:3000/register', {
-      method: 'POST',
-      mode: 'cors',
-      body: registerInfo,
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
-        if (res.createdAccount === 'success') {
-          history.push('/login');
-        }
-      })
-      .catch((err) => console.log(err));
+    // fetch(`http://localhost:${process.env.PORT}/register`, {
+    //   method: 'POST',
+    //   mode: 'cors',
+    //   body: registerInfo,
+    // })
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     console.log(res);
+    //     if (res.createdAccount === 'success') {
+    //       history.push('/login');
+    //     }
+    //   })
+    //   .catch((err) => console.log(err));
+    history.push('/login');
   }
   return (
     <div>

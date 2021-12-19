@@ -21,10 +21,6 @@ const Calendar = ({ events, files }) => {
   });
   const currentMonth = (firstDayOfMonth.getMonth() + 1).toString();
   const [monthString, currYear, weekday] = dateString.split(' ');
-  // console.log(monthString, currYear, weekday);
-  // console.log(events, files);
-  // console.log(currentMonth);
-  // console.log(currYear);
   const currEvents = [];
   const currFiles = [];
   events.forEach((event) => {
