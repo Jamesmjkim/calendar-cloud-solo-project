@@ -12,7 +12,6 @@ calendarController.getData = (req, res, next) => {
         files: data.files,
       };
       res.locals.userData = userData;
-      //   console.log(userData);
 
       return next();
     })
