@@ -7,7 +7,7 @@ const fileUpload = require('express-fileupload');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cookieParser());
@@ -19,7 +19,7 @@ const loginRouter = require('./routes/login.js');
 const registerRouter = require('./routes/register.js');
 const uploadRouter = require('./routes/upload.js');
 const eventRouter = require('./routes/event.js');
-const calendarRouter = require('./routes/calendar');
+const calendarRouter = require('./routes/calendar.js');
 
 app.use(
   '/static',
